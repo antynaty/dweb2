@@ -1,28 +1,38 @@
 import React from 'react';
 import { 
   StyleSheet, 
-  Text
+  Text,
+  AppRegistry
+
 } from 'react-native';
 import { 
     Container, 
     Content, 
     Header,
     Left,
-    Right 
-  } from 'native-base';
+    Right,
+    Card,
+    CardItem
+  } from 'native-base'; 
+import { Ionicons } from '@expo/vector-icons'; 
+import {createStackNavigator} from 'react-navigation'; 
+import HistorialCard from './HisotrialCard';
 
-  import { Ionicons } from '@expo/vector-icons'; 
 export default class Profile extends React.Component {
   render() {
     return (
         <Container style={styles.container}> 
             <Header style={styles.Bottom}> 
-                <Text style={styles.titulo}> CocinApp </Text>
-                <Left>
-                    < Ionicons name= "md-menu" style={ {color:'white'}} />
-                </Left>    
+                <Text style={styles.titulo}> CocinApp </Text> 
             </Header>
-          
+            <Content>
+                <Card> 
+                    <CardItem>
+                        <Text> Tu historial de recetas </Text>
+                    </CardItem>  
+                    < HistorialCard  navigation={this.props.navigation}/>
+                </Card>
+            </Content>
         </Container>
         
     );
@@ -39,7 +49,7 @@ const styles = StyleSheet.create({
     Bottom:{
         backgroundColor: "#F8ECE0",
         height: 90,
-        borderBottomColor: "#F7F8E0"
+        // borderBottomColor: "#F7F8E0"
     },
     titulo:{
         textAlign: 'center',

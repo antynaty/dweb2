@@ -7,11 +7,12 @@ import {
 
 } from 'react-native';
 import {createStackNavigator} from 'react-navigation';
-import Login from './screens/Login/Login';
+
 import Splash from './screens/Splash/Splash';
+import Login from './screens/Login/Login'; 
 import LoginForm from './screens/Login/LoginForm';
 import DrawerNavigator from './screens/DrawerNavigator';
-
+import HistorialCard from './screens/Home/TabNavigator/HisotrialCard';
 
 export default class App extends React.Component {
   render() {
@@ -30,6 +31,9 @@ const RootStack = createStackNavigator({
   },
   LoginForm : {
     screen : LoginForm
+  },
+  HistorialCard: {
+    screen: HistorialCard
   },
   DrawerNavigator :{
     screen : DrawerNavigator,

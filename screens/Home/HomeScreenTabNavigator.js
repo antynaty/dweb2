@@ -13,8 +13,9 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 
 import Home from './Home';
-import Profile from './TabNavigator/Profile';
+
 import Camera from './TabNavigator/Camera';
+import Profile from './TabNavigator/Profile';
 
 export default class AppTabNavigator extends React.Component {
 
@@ -49,6 +50,7 @@ const HomeScreenTabNavigator = createBottomTabNavigator ({
 
         })
     },
+    // ya no sera profiel, sino un home con las recetas
     Profile : {
         screen: Profile,
         navigationOptions: ({navigation}) => ({
