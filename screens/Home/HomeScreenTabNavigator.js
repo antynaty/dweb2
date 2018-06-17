@@ -1,31 +1,31 @@
 import React from 'react';
 import { 
-    StyleSheet, 
-    Text, 
-    View
+    StyleSheet,  
 } from 'react-native';
 import { 
     createBottomTabNavigator,
     createDrawerNavigator
 } from 'react-navigation';
-
+import { 
+    Container,
+    Text,
+    Content,
+    Icon
+} from 'native-base';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Ionicons } from '@expo/vector-icons';
-
-import Home from './Home';
-
-import Camera from './TabNavigator/Camera';
-import Profile from './TabNavigator/Profile';
+ 
+import Camera from './TabNavigator/Tabs/Camera/Camera';
+import Profile from './TabNavigator/Tabs/Profile/Profile';
 
 export default class AppTabNavigator extends React.Component {
 
     static navigationOptions = ({navigation}) => {
         return {
-            headerLeft:(
-                <View style= { styles.container } >
-                    <Ionicons name='md-menu' size={24} onPress={()=> navigation.openDrawer() }/>
-                </View> 
-            )
+            headerLeft:
+                <Ionicons name='md-menu' size={24} style={{paddingLeft:10}}
+                onPress={()=> navigation.openDrawer() }/> ,
+            title: "CocinApp " 
         }
     }
     render() {
@@ -46,11 +46,10 @@ const HomeScreenTabNavigator = createBottomTabNavigator ({
                   iconName = `ios-camera${focused ? '' : '-outline'}`;
                 }
                 return <Ionicons name={iconName} size={25} color={tintColor} />;
-              },
-
+            }
         })
     },
-    // ya no sera profiel, sino un home con las recetas
+    // ya no sera profile, sino un home con las recetas
     Profile : {
         screen: Profile,
         navigationOptions: ({navigation}) => ({
@@ -63,19 +62,21 @@ const HomeScreenTabNavigator = createBottomTabNavigator ({
                 return <Ionicons name={iconName} size={25} color={tintColor} />;
               },
 
-        }),
-        tabBarOptions: {
-            activeTintColor: 'tomato',
-            inactiveTintColor: 'gray',
-      },
+        }) 
     }
 
 });
 
 const styles = StyleSheet.create({
     container: {
-        padding:10,
-        backgroundColor: '#F7F8E0',
+        padding:10, 
+        flexDirection: 'row'
+    }, 
+    titulo:{
+        textAlign: 'center',
+        fontSize: 21,
+        marginRight: 30,
+        opacity:0.9
     }
 
 })

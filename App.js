@@ -12,7 +12,8 @@ import Splash from './screens/Splash/Splash';
 import Login from './screens/Login/Login'; 
 import LoginForm from './screens/Login/LoginForm';
 import DrawerNavigator from './screens/DrawerNavigator';
-import HistorialCard from './screens/Home/TabNavigator/HisotrialCard';
+import HistorialCard from './screens/Home/TabNavigator/Tabs/Profile/HisotrialCard';
+import Gallery from './screens/Home/TabNavigator/Tabs/Camera/Gallery';
 
 export default class App extends React.Component {
   render() {
@@ -28,12 +29,9 @@ const RootStack = createStackNavigator({
   // },
   Login : {
     screen : Login
-  },
-  LoginForm : {
-    screen : LoginForm
-  },
-  HistorialCard: {
-    screen: HistorialCard
+  }, 
+  Gallery: {
+    screen: Gallery
   },
   DrawerNavigator :{
     screen : DrawerNavigator,
@@ -41,7 +39,7 @@ const RootStack = createStackNavigator({
       header: null 
     }
   }
-}, { 
+  }, { 
   navigationOptions:{
     gesturesEnable: false
   }

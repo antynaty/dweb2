@@ -9,8 +9,7 @@ import {
     createDrawerNavigator,
     SafeAreaView
 } from 'react-navigation';
-
-import Home from './Home/Home';
+ 
 import HomeScreenTabNavigator from './Home/HomeScreenTabNavigator';
 
 const InnerStackNavigator = createStackNavigator({ // en HOME las tabs de abajo
@@ -19,7 +18,7 @@ const InnerStackNavigator = createStackNavigator({ // en HOME las tabs de abajo
     }
 });
 const AppDrawerNavigator = createDrawerNavigator({  // apunta a Home
-    Home: {
+    Profile: {
       screen: InnerStackNavigator,
     }
 });

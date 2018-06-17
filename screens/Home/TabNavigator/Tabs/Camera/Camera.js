@@ -30,7 +30,9 @@ export default class CameraExample extends React.Component {
     newPhotos: false,
     showGallery: false
   };
-  
+  static navigationOptions = {
+    header : null 
+  }
   toggleView = () => this.setState({ showGallery: !this.state.showGallery, newPhotos: false });
   // getRatios for takeSnap
   getRatios = async () => {

@@ -7,7 +7,7 @@ import {
   Image,
   AppRegistry
    
-} from 'react-native';
+} from 'react-native';  
 import Profile from './Profile';
 
 
@@ -21,23 +21,21 @@ class HistorialCard extends React.Component {
     renderItem = ({item}) => {
         return (
             <View>
-            <Image style={{ width: 100, height:100}}
-                source = {{uri: item.picture }} />
-            <View> 
-                <Text>
-                    {item.name}
-                </Text>
-                <Text>
-                    {item.about}
-                </Text>
+                <Image style={{ width: 100, height:100}}
+                    source = {{uri: item.picture }} />
+                <View> 
+                    <Text>
+                        {item.name}
+                    </Text>
+                    <Text>
+                        {item.about}
+                    </Text>
+                </View> 
             </View>
-
-        </View>
-        )
-        
+        ) 
     }
     componentDidMount (){
-        const url = "http://www.json-generator.com/api/json/get/cgiLPwERlu?indent=2"
+        const url = 'http://www.json-generator.com/api/json/get/cgiLPwERlu?indent=2'
         fetch(url)  // fetch al server
         .then((response) => response.json() )
         .then( ( responseJson)=> {
@@ -45,11 +43,11 @@ class HistorialCard extends React.Component {
         })
         .catch((error) => {
             console.log(error)
-        })
+        })  
     }
     render() {
         return (
-            <View style={styles.container}> 
+            <View> 
                 <FlatList  
                     data = {this.state.dataSource}
                     renderItem={this.renderItem}
@@ -60,7 +58,6 @@ class HistorialCard extends React.Component {
 }
 
 export default HistorialCard;
-
 
 const styles = StyleSheet.create({
     container: {
