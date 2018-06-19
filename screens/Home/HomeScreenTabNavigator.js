@@ -22,10 +22,13 @@ export default class AppTabNavigator extends React.Component {
 
     static navigationOptions = ({navigation}) => {
         return {
-            headerLeft:
-                <Ionicons name='md-menu' size={24} style={{paddingLeft:10}}
-                onPress={()=> navigation.openDrawer() }/> ,
-            title: "CocinApp " 
+            headerLeft: <Ionicons name='md-menu' size={24} 
+                style={{paddingLeft:10}}
+                onPress={()=> navigation.openDrawer() }
+                />,
+            title: "CocinApp ",
+            headerStyle: { backgroundColor: '#FFBF00'
+            }
         }
     }
     render() {

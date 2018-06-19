@@ -20,26 +20,35 @@ class HistorialCard extends React.Component {
     }
     renderItem = ({item}) => {
         return (
-            <View>
+            <View style={styles.flatItem}>
                 <Image style={{ width: 100, height:100}}
                     source = {{uri: item.picture }} />
-                <View> 
-                    <Text>
+                <View style={styles.flatContent}> 
+                    <Text style={styles.itemTextName}>
                         {item.name}
                     </Text>
-                    <Text>
+                    <Text style={styles.itemTextAbout}>
                         {item.about}
                     </Text>
                 </View> 
             </View>
         ) 
     }
+    renderSeparator = () => {
+        return ( 
+            <View
+                style={{ height:2, width:'100%', backgroundColor:'white' }}
+            >
+            </View>
+        )
+    }
     componentDidMount (){
         const url = 'http://www.json-generator.com/api/json/get/cgiLPwERlu?indent=2'
         fetch(url)  // fetch al server
         .then((response) => response.json() )
         .then( ( responseJson)=> {
-            dataSource: responseJson.receta_array
+            this.setState({
+                dataSource: responseJson.receta_array});
         })
         .catch((error) => {
             console.log(error)
@@ -47,10 +56,12 @@ class HistorialCard extends React.Component {
     }
     render() {
         return (
-            <View> 
+            <View style={styles.container}> 
                 <FlatList  
                     data = {this.state.dataSource}
                     renderItem={this.renderItem}
+                    keyExtractor={(item, index) => index}
+                    ItemSeparatorComponent={this.renderSeparator}
                 /> 
             </View> 
         );
@@ -60,9 +71,22 @@ class HistorialCard extends React.Component {
 export default HistorialCard;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,  
-        justifyContent:'center',
-        alignItems: 'center'
+    container: { 
+        backgroundColor: '#F7F8E0'
     },  
+    flatItem: {
+        flex: 1,
+        flexDirection:'row',
+    },  
+    flatContent:{
+        flex:1,
+        justifyContent:'center',
+        marginLeft:5
+    },
+    itemTextName:{
+        fontSize:19
+    },
+    itemTextAbout:{
+        fontSize:17
+    }
 });

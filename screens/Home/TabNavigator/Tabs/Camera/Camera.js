@@ -24,6 +24,7 @@ import Gallery from './Gallery';
 export default class CameraExample extends React.Component {
   state = {
     hasCameraPermission: null,
+    hasCameraRollPermission: null,
     type: Camera.Constants.Type.back, 
     cameraRollUri: null,
     ratios: [],
@@ -42,7 +43,11 @@ export default class CameraExample extends React.Component {
 
   async componentWillMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    this.setState({ hasCameraPermission: status === 'granted' });
+    const { statusRoll } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    this.setState({ 
+        hasCameraPermission: status === 'granted',
+        hasCameraRollPermission: statusRoll === 'granted'
+    });
   }
 
   async componentDidMount() {
@@ -151,8 +156,8 @@ export default class CameraExample extends React.Component {
         return <Gallery onPress={this.toggleView.bind(this)} />;
     };
     render() {
-        const { hasCameraPermission } = this.state;
-        if (hasCameraPermission === null) {
+        const { hasCameraPermission, hasCameraRollPermission } = this.state;
+        if (hasCameraPermission === null && hasCameraRollPermission === null) {
         return <View />;
         } else if (hasCameraPermission === false) {
         return <Text>No access to camera</Text>;

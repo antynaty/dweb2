@@ -22,33 +22,26 @@ export default class Profile extends React.Component {
 
     render() {
         return (
-            <Container style={styles.container}>  
+            <Container >  
                 <Content> 
                     <Text style={styles.titulo} > Tu historial de recetas </Text> 
-                    
+                    < HistorialCard  navigation={this.props.navigation}/>
                 </Content>
-                    
-                <Content> 
-                < HistorialCard  navigation={this.props.navigation}/> 
-                </Content>
+                     
             </Container>
             
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1, 
-        // backgroundColor: rgb(245, 254, 219),
-        justifyContent:'center',
-        alignItems: 'center'
-    },
+const styles = StyleSheet.create({ 
     titulo:{
         textAlign: 'center',
         fontSize: 21,
         marginTop: 5,
-        opacity:0.9
+        opacity:0.9,
+        backgroundColor: '#FFBF00'
     }
 });
 AppRegistry.registerComponent('App', () => App);
+
