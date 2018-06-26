@@ -14,6 +14,7 @@ import LoginForm from './screens/Login/LoginForm';
 import DrawerNavigator from './screens/DrawerNavigator';
 import HistorialCard from './screens/Home/TabNavigator/Tabs/Profile/HisotrialCard';
 import Gallery from './screens/Home/TabNavigator/Tabs/Camera/Gallery';
+import User from './screens/User/User/';
 
 export default class App extends React.Component {
   render() {
@@ -38,7 +39,10 @@ const RootStack = createStackNavigator({
     navigationOptions: {
       header: null 
     }
-  }
+  }, 
+  User : {
+    screen : User
+  }, 
   }, { 
   navigationOptions:{
     gesturesEnable: false
